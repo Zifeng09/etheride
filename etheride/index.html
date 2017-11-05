@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="static/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>Etheride Dashboard</title>
+  <!-- Bootstrap core CSS     -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+  <!--  Fonts and icons     -->
+  <link type="text/css" href="https://fonts.googleapis.com/css?family=Muli:400,300" rel="stylesheet">
+  <link type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link href="static/css/themify-icons.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrapper" id="app">
+
+</div>
+<!-- built files will be auto injected -->
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAamVCoyQ4AuvBpxVRMs9P-HFkfPVQj0Kw" type="text/javascript"></script>
+<script type="text/javascript">
+web3.version.getNetwork((err, netId) => {
+  switch (netId) {
+    case "1":
+      alert('This is mainnet')
+      break
+    case "2":
+      alert('This is the deprecated Morden test network.')
+      break
+    case "3":
+      alert('This is the ropsten test network.')
+      break
+    default:
+        alert('This is the Rinkeby test network.')
+  }
+})
+</script>
+
+<script type="text/javascript">
+if (typeof web3 !== 'undefined') {
+  web3 = new Web3(web3.currentProvider);
+} else {
+  // set the provider you want from Web3.providers
+  web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8080"));
+}
+</script>
+<script type="text/javascript">
+
+
+console.log(web3.eth.accounts[0]);
+
+
+</script>
+<script>
+var batch = web3.createBatch();
+batch.add(web3.eth.getBalance.request('0x0000000000000000000000000000000000000000', 'latest', callback));
+batch.add(web3.eth.contract(abi).at(address).balance.request(address, callback2));
+batch.execute();
+</script>
+
+
+</body>
+</html>
